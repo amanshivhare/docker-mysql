@@ -1,28 +1,77 @@
+
 # docker-mysql
 
-This project is about running Spring boot and MySQL with the help of Docker.
-Follow the below steps to run the project.
+This project demonstrates how to run a Spring Boot application with a MySQL database using Docker.
 
-1) Extract the project thenn unzip it.
-2) Run mvn clean install.
-3) Login to the Docker Hub using terminal. For that run 'docker login' followed by username and password.
-    If successfully logged in then move to the next step
-      else you might need to update the docker, and for that below commands might help.
-      - sudo apt update
-      - sudo apt upgrade docker-ce
+## Getting Started
 
-4) Open the terminal and then go to the project path where Dockerfile is present i.e. 'docker-mysql'.
-    Then in there build the image of the project by executing the below command.
-      'docker build -t docker-hub-username/image-name:tag .'
+Follow the steps below to build and run the project using Docker and Docker Compose:
 
-Replace docker-hub-username, image-name, tag with appropriate values. (Tag as in version of the image. For ex: 0.0.1 or 0.0.3)
+---
 
-5) Its time to run the compose command in the same folder where docker-compose is present i.e. inside 'docker-mysql'.
-    Run 'docker-compose up'.
-6) Once done successfully run 'docker ps'. After this you will see 2 containers running on the local.
-  - Boot Application running on a IP:port.
-  - MySQL running on another port.
-   
-7) To connect to the Boot application note the IP and PORT on which its running and test it using postman.
-8) Use the command 'docker exec -it container_id bash' to connect to the MySQL DB.
-     Replace the container_id with appropriate id..
+### 1. **Extract and Build the Project**
+- Unzip the project archive.
+- Navigate to the root directory and run:
+  ```bash
+  mvn clean install
+  ```
+
+---
+
+### 2. **Login to Docker Hub**
+- Open a terminal and run:
+  ```bash
+  docker login
+  ```
+- Enter your Docker Hub username and password when prompted.
+
+> тЪая╕П If login fails, your Docker installation may be outdated. Try the following commands:
+```bash
+sudo apt update
+sudo apt upgrade docker-ce
+```
+
+---
+
+### 3. **Build the Docker Image**
+- Navigate to the project directory containing the `Dockerfile` (e.g., `docker-mysql`) and run:
+  ```bash
+  docker build -t your-dockerhub-username/image-name:tag .
+  ```
+- Replace:
+  - `your-dockerhub-username` with your Docker Hub username
+  - `image-name` with your desired image name
+  - `tag` with a version label (e.g., `0.0.1`)
+
+---
+
+### 4. **Run Docker Compose**
+- From the same directory where `docker-compose.yml` is located, run:
+  ```bash
+  docker-compose up
+  ```
+
+---
+
+### 5. **Verify Running Containers**
+- After successful startup, check running containers using:
+  ```bash
+  docker ps
+  ```
+- You should see two containers:
+  - Spring Boot application running on a specific IP and port
+  - MySQL database container on another port
+
+---
+
+### 6. **Test the Application**
+- Use the IP and port from the Boot application container to test the APIs via Postman or any REST client.
+
+---
+
+### 7. **Access the MySQL Container**
+- To connect to the MySQL container, run:
+  ```bash
+  docker exec -it <container_id> bash
+  ```
+- Replace `<container_id>` with the actual container ID of the MySQL container.
