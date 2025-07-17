@@ -25,7 +25,7 @@ Follow the steps below to build and run the project using Docker and Docker Comp
   ```
 - Enter your Docker Hub username and password when prompted.
 
-> тЪая╕П If login fails, your Docker installation may be outdated. Try the following commands:
+> If login fails, your Docker installation may be outdated. Try the following commands:
 ```bash
 sudo apt update
 sudo apt upgrade docker-ce
